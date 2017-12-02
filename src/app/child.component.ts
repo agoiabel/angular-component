@@ -1,12 +1,20 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
     selector: 'child-component',
-    template: `
-        <p>This is child component</p>    
-        {{ childMessage }}
+    template: `    
+        {{ childToMessage }}
+
+        <button (click)="sendMessageToParent()">Send Message To Parent</button>
     `
 })
 export class ChildComponent {
-    @Input() childMessage: string;
+    @Input() messageToChild: string;
+    @Output() messageFromChild = new EventEmitter();
+
+
+    /** Emit a message from child component to parent */
+    sendMessageToParent() {
+        this.messageFromChild.emit("Sent a message from child using Output Event Emitter");
+    } 
 }
