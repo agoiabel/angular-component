@@ -14,7 +14,11 @@ export class ChildComponent {
 
 
     /** Emit a message from child component to parent */
-    sendMessageToParent() {
+    public sendMessageToParent = () => {
         this.messageFromChild.emit("Sent a message from child using Output Event Emitter");
     } 
+
+    public childMethod = () => {
+        console.log("I was access through @ViewChild");
+    }
 }
